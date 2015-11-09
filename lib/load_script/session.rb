@@ -53,7 +53,7 @@ module LoadScript
         :user_browse_loans_requests,
         :new_borrower_create_loan_request,
         :lender_makes_loan,
-        # :user_browses_category_pages
+        :user_browses_category_pages
       ]
     end
 

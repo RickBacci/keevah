@@ -10,11 +10,7 @@ namespace :load_script do
 
     4.times.map do
       Thread.new do
-        # if ARGV[1]
-          Thread.new(LoadScript::Session.new(ARGV[1]).run)
-        # else
-        #   Thread.new( LoadScript::Session.new().run)
-        # end
+        LoadScript::Session.new(ARGV[1]).run
       end
     end.map(&:join)
   end

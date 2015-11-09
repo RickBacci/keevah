@@ -53,26 +53,40 @@ module LoadScript
         :user_browse_loans_requests,
         :new_borrower_create_loan_request,
         :lender_makes_loan,
-#        :user_browses_categories,
-        :user_browses_category_pages
+        # :user_browses_category_pages
       ]
     end
 
-    # def user_browses_categories
-    # end
-
     def user_browses_category_pages
-      puts 'User browsing category pages'
+    categories = [
+      "Agriculture",
+      "Education",
+      "Water and Sanitation",
+      "Youth",
+      "Conflict Zones",
+      "Transportation",
+      "Housing",
+      "Banking and Finance",
+      "Manufacturing",
+      "Food and Nutrition",
+      "Vulnerable Groups"
+    ]
+
       log_out
       log_in
 
-      session.find("#category-1").click
+      puts 'User browsing category pages'
+      session.visit "#{host}/browse"
+
+      session.find('#category_dropdown').click
+      session.click_link categories.sample
     end
 
     def user_browse_loans_requests(email="jorge@example.com", pw="password")
-      puts 'User browsing loan requests'
       log_out
       log_in
+
+      puts 'User browsing loan requests'
 
       session.visit "#{host}/browse"
       session.all(".lr-about").sample.click
